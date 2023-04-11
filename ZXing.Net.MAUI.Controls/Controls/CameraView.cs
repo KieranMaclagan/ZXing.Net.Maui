@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Maui.Controls;
+﻿using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 using System;
 
@@ -38,5 +37,14 @@ namespace ZXing.Net.Maui.Controls
 
 		CameraViewHandler StrongHandler 
 			=> Handler as CameraViewHandler;
-	}
+
+        public static readonly BindableProperty ZoomLevelProperty =
+            BindableProperty.Create(nameof(ZoomLevel), typeof(double), typeof(CameraView), defaultValue: 1.0d);
+
+        public double ZoomLevel
+        {
+            get => (double)GetValue(ZoomLevelProperty);
+            set => SetValue(ZoomLevelProperty, value);
+        }
+    }
 }

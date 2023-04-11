@@ -14,7 +14,10 @@ namespace ZXing.Net.Maui
 			[nameof(ICameraBarcodeReaderView.Options)] = MapOptions,
 			[nameof(ICameraBarcodeReaderView.IsDetecting)] = MapIsDetecting,
 			[nameof(ICameraBarcodeReaderView.IsTorchOn)] = (handler, virtualView) => handler.cameraManager.UpdateTorch(virtualView.IsTorchOn),
-			[nameof(ICameraBarcodeReaderView.CameraLocation)] = (handler, virtualView) => handler.cameraManager.UpdateCameraLocation(virtualView.CameraLocation)
+			[nameof(ICameraBarcodeReaderView.CameraLocation)] = (handler, virtualView) => handler.cameraManager.UpdateCameraLocation(virtualView.CameraLocation),
+#if IOS
+			[nameof(ICameraBarcodeReaderView.ZoomLevel)] = (handler, virtualView) => handler.cameraManager.UpdateZoom(virtualView.ZoomLevel),
+#endif
 		};
 
 		public static CommandMapper<ICameraBarcodeReaderView, CameraBarcodeReaderViewHandler> CameraBarcodeReaderCommandMapper = new()
